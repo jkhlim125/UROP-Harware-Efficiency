@@ -1,4 +1,4 @@
-# Hardware-Efficient LUT-Based Neural Network (UROP 1100)
+# LutNet: Hardware-Aware Pruning and FPGA Efficiency
 
 This project explores hardware-aware training and pruning strategies for LUT-based neural networks, with the goal of achieving efficient FPGA deployment while maintaining strong classification performance.
 

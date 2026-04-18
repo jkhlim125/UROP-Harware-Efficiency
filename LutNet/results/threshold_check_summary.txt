@@ -1,0 +1,13 @@
+CHECK PRUNING CONSISTENCY
+tensor shape: (16, 12, 6)
+total tensor elements: 1152
+sparsity target: 0.6
+valid elements used for pruning: 1152
+threshold value: 0.18000001
+target prune count: 691
+naive prune count: 682
+improved prune count: 691
+threshold tie count: 28
+naive prune-count error: -9
+improved prune-count error: +0
+per-output prune spread: 0.625000

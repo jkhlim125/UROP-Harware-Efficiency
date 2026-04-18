@@ -1,0 +1,95 @@
+================================================================================
+CONFIDENCE AND FAILURE ANALYSIS - SUMMARY
+================================================================================
+
+[GLOBAL STATISTICS]
+Overall Test Accuracy: 60.36%
+Correct predictions - Avg confidence: 0.8285
+Incorrect predictions - Avg confidence: 0.4181
+Correct predictions - Avg margin (top1-top2): 0.7388
+Incorrect predictions - Avg margin (top1-top2): 0.2256
+
+Confidence gap (correct - incorrect): 0.4104
+  Interpretation: Good separation between correct/incorrect
+
+Margin gap (correct - incorrect): 0.5133
+  Interpretation: Clear decision boundary
+
+================================================================================
+[WBFM FAILURE ANALYSIS]
+================================================================================
+
+WBFM Accuracy: 28.10%
+  High SNR (>=10 dB): 40.60%
+  Low SNR (<=-10 dB): 3.67%
+
+WBFM Correct Predictions:
+  Average confidence: 0.8935
+  Average margin: 0.8041
+
+WBFM Incorrect Predictions:
+  Average confidence: 0.5231
+  Average margin: 0.2480
+
+  ✓ DIAGNOSIS: UNCERTAINTY-DRIVEN ERRORS
+    Confidence gap: 0.3703
+    Model is uncertain about WBFM, leading to errors.
+
+WBFM Misclassification Breakdown:
+  AM-DSB: 915 cases ( 63.6%) - Avg confidence: 0.6194, Margin: 0.2653
+  AM-SSB: 396 cases ( 27.5%) - Avg confidence: 0.3335, Margin: 0.2082
+  GFSK:  49 cases (  3.4%) - Avg confidence: 0.6327, Margin: 0.4691
+  BPSK:  16 cases (  1.1%) - Avg confidence: 0.2314, Margin: 0.0333
+  PAM4:  14 cases (  1.0%) - Avg confidence: 0.4495, Margin: 0.2484
+  8PSK:  12 cases (  0.8%) - Avg confidence: 0.2204, Margin: 0.0519
+  CPFSK:  12 cases (  0.8%) - Avg confidence: 0.2412, Margin: 0.0815
+  QPSK:  11 cases (  0.8%) - Avg confidence: 0.3492, Margin: 0.1773
+  QAM16:   9 cases (  0.6%) - Avg confidence: 0.2087, Margin: 0.0566
+  QAM64:   4 cases (  0.3%) - Avg confidence: 0.3048, Margin: 0.1046
+
+================================================================================
+[AM-SSB SINK ANALYSIS]
+================================================================================
+
+AM-SSB Predictions:
+  Correct (true label = AM-SSB): 1654 cases
+  Sink (true label ≠ AM-SSB): 4222 cases
+  Sink rate: 71.9%
+
+Correct AM-SSB Predictions:
+  Average confidence: 0.3518
+  Average margin: 0.2262
+
+Sink (Incorrect) AM-SSB Predictions:
+  Average confidence: 0.3400
+  Average margin: 0.2128
+
+  ✗ DIAGNOSIS: SYSTEMATIC BIAS (Similar High Confidence)
+    Confidence gap: 0.0117 (small)
+    Model acts as if multiple classes ARE AM-SSB.
+    This indicates classifier bias or feature collapse.
+
+AM-SSB Sink Sources (Top contributors):
+  8PSK: 528 cases - Avg confidence: 0.3485
+  QPSK: 520 cases - Avg confidence: 0.3378
+  BPSK: 511 cases - Avg confidence: 0.3444
+  CPFSK: 494 cases - Avg confidence: 0.3416
+  GFSK: 485 cases - Avg confidence: 0.3442
+
+================================================================================
+[KEY DIAGNOSTIC QUESTIONS]
+================================================================================
+
+Q1: Are WBFM errors due to uncertainty or confident misclassification?
+  A: CONFIDENT MISCLASSIFICATION - Margin: 0.2480
+     Model is confident but wrong → representation failure.
+
+Q2: Is AM-SSB acting as a fallback class or a biased attractor?
+  A: BIASED ATTRACTOR - High confidence (0.3400)
+     Model systematically confuses other classes as AM-SSB.
+
+Q3: Is the bottleneck due to representation failure or decision ambiguity?
+  A: LIKELY REPRESENTATION - Mean margin: 0.4822
+     Model makes confident decisions, but wrong on specific classes.
+
+================================================================================

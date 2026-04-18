@@ -1,4 +1,4 @@
-# Hardware-Efficient Neural Networks and Signal Representation Learning
+# Constraint-Aware Neural Network Systems
 
 This repository documents my UROP 1100 research work on hardware-efficient neural networks and signal classification.
 

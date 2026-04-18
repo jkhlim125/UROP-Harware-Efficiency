@@ -1,0 +1,5 @@
+log_file,epochs_with_train_lines,epochs_with_test_accuracy,best_test_accuracy,best_epoch,final_test_accuracy,final_epoch,first_epoch_ge_70,bib_loss_seen,warmup_finished,pairing_map_step,pruning_surgery,fpga_report
+log1x_l1.txt,301,201,77.73,100,57.48,301,12,False,True,True,True,True
+log1x_l2.txt,300,200,78.27,63,52.15,301,13,False,True,True,True,True
+log2x_l1.txt,301,201,79.8,100,60.14,301,10,False,True,True,True,True
+log2x_l2.txt,301,201,80.96,100,63.09,301,10,False,True,True,True,True

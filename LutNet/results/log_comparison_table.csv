@@ -1,0 +1,5 @@
+run,best_test_accuracy,final_test_accuracy,pruning_surgery_happened,pack_ratio,global_sparsity,slice_reduction,pin_reduction_rate
+log1x_l1.txt,77.73,57.48,True,0.9,0.6,61.16,68.54
+log1x_l2.txt,78.27,52.15,True,0.8,0.8,55.89,74.22
+log2x_l1.txt,79.8,60.14,True,0.5,0.9,81.11,85.89
+log2x_l2.txt,80.96,63.09,True,0.5,0.9,70.71,84.16
